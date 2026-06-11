@@ -1,213 +1,468 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
-  <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="2st International Workshop on Federated Learning for Industry 4.0 (FL4Industry) at FLTA2026">
-
+  <meta name="description" content="2nd International Workshop on Federated Learning for Industry 4.0 (FL4Industry) at FLTA2026">
   <meta property="og:url" content="fedlearn-hub.github.io"/>
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
   <meta property="og:image" content="static/image/your_banner_image.png" />
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
   <meta name="keywords" content="federated Learning; Call For Paper; Conference">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>FL for Industry 4.0 </title>
+  <title>FL4Industry – Federated Learning for Industry 4.0</title>
   <link rel="icon" type="image/x-icon" href="static/images/icon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-  rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script src="static/js/index.js"></script>
+    :root {
+      --navy:       #222840;   /* FLTA navbar dark */
+      --navy-deep:  #181d30;   /* deeper shade for hero bg */
+      --navy-mid:   #2d3350;   /* card/strip bg */
+      --accent:     #5b8cff;   /* bright blue for links/highlights on dark */
+      --accent-dim: #3a6be0;   /* hover */
+      --gold:       #f0b429;   /* warm highlight — single signature element */
+      --ink:        #1e2235;   /* body text on white */
+      --mid:        #5a607a;
+      --rule:       #e2e6f0;
+      --bg-alt:     #f5f7fb;
+      --white:      #ffffff;
+      --font:       'Inter', system-ui, sans-serif;
+      --max:        780px;
+    }
+
+    html { font-size: 16px; }
+    body {
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent-dim); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy);
+      padding: 0 2rem;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-right: .4rem;
+    }
+    .nav-pipe { color: rgba(255,255,255,.2); }
+    .nav-link {
+      font-size: 0.84rem;
+      color: rgba(255,255,255,.65);
+      transition: color .15s;
+    }
+    .nav-link:hover { color: var(--white); text-decoration: none; }
+    .nav-link-ext {
+      font-size: 0.84rem;
+      color: var(--gold);
+      margin-left: auto;
+      opacity: .9;
+    }
+    .nav-link-ext:hover { opacity: 1; text-decoration: none; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      /* subtle dot-grid texture matching FLTA aesthetic */
+      background-image:
+        radial-gradient(circle at 70% 50%, rgba(91,140,255,.12) 0%, transparent 60%),
+        radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: auto, 28px 28px;
+      padding: 4.5rem 2rem 4rem;
+      color: var(--white);
+    }
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 18px; height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+    .hero h1 {
+      font-size: clamp(1.55rem, 3.2vw, 2.1rem);
+      font-weight: 700;
+      line-height: 1.22;
+      color: var(--white);
+      margin-bottom: .9rem;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: 0.97rem;
+      color: rgba(255,255,255,.6);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    /* ── DEADLINE STRIP ── */
+    .deadline-strip {
+      display: flex;
+      gap: 1px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 2.4rem;
+    }
+    .deadline-item {
+      flex: 1;
+      background: rgba(255,255,255,.05);
+      padding: .9rem 1.2rem;
+      min-width: 0;
+    }
+    .deadline-item.primary {
+      background: var(--gold);
+    }
+    .deadline-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.55);
+      margin-bottom: .2rem;
+    }
+    .deadline-date {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .deadline-item.primary .deadline-label { color: rgba(30,34,53,.65); }
+    .deadline-item.primary .deadline-date  { color: var(--navy-deep); }
+
+    /* ── CTA ── */
+    .cta-bar { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: .6rem 1.4rem;
+      border-radius: 4px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      transition: background .15s, color .15s, border-color .15s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: var(--accent-dim); text-decoration: none; }
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,.25);
+      color: rgba(255,255,255,.75);
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,.6); color: var(--white); text-decoration: none; }
+
+    /* ── SHARED SECTION ── */
+    .section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    .divider { border: none; border-top: 1px solid var(--rule); }
+
+    .section-alt {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .section-alt .section { } /* inherits max-width centering */
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    h2::before {
+      content: '';
+      display: inline-block;
+      width: 3px; height: 1.1em;
+      background: var(--navy);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    h3 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 1.4rem 0 .35rem;
+    }
+    p { font-size: 0.9rem; color: var(--mid); line-height: 1.7; margin-bottom: .8rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── TOPIC LIST ── */
+    .topic-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .55rem 1.5rem;
+    }
+    .topic-list li {
+      font-size: 0.86rem;
+      color: var(--mid);
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.45;
+    }
+    .topic-list li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: .5em;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--navy);
+    }
+
+    /* ── ORGANIZERS ── */
+    .organizer-list { list-style: none; }
+    .organizer-list li {
+      display: flex;
+      align-items: baseline;
+      gap: .6rem;
+      padding: .65rem 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.88rem;
+    }
+    .organizer-list li:last-child { border-bottom: none; }
+    .org-name { font-weight: 600; color: var(--ink); white-space: nowrap; }
+    .org-affil { color: var(--mid); font-size: 0.82rem; }
+
+    .open-invite {
+      margin-top: 1.2rem;
+      background: #eef2ff;
+      border-left: 3px solid var(--navy);
+      border-radius: 0 4px 4px 0;
+      padding: .75rem 1rem;
+      font-size: 0.86rem;
+      color: var(--navy);
+    }
+    .open-invite a { color: var(--navy); font-weight: 600; text-decoration: underline; }
+
+    /* ── SUBMISSION CARDS ── */
+    .sub-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: .9rem;
+    }
+    .sub-card {
+      border: 1px solid var(--rule);
+      border-top: 3px solid var(--navy);
+      border-radius: 4px;
+      padding: 1rem 1.1rem;
+    }
+    .sub-card .card-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: .3rem;
+    }
+    .sub-card .card-pages {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: .3rem;
+    }
+    .sub-card p { font-size: 0.8rem; margin: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,.5);
+      font-size: 0.78rem;
+      text-align: center;
+      padding: 1.4rem 2rem;
+    }
+    footer a { color: rgba(255,255,255,.7); }
+    footer a:hover { color: var(--white); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .deadline-strip { flex-direction: column; gap: 0; }
+      .topic-list { grid-template-columns: 1fr; }
+      .sub-grid { grid-template-columns: 1fr; }
+      .organizer-list li { flex-direction: column; gap: .15rem; }
+    }
+  </style>
 </head>
 <body>
 
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">2st International Workshop on Federated Learning for Industry 4.0 (FL4Industry) at <a href="https://flta-conference.org/flta-2026" target="_blank">FLTA2026</a></h1>
-            <div class="is-size-5 publication-authors">
-              <!-- Paper authors -->
-            </div>
-          </div>
+  <!-- NAV -->
+  <nav>
+    <span class="nav-label">FL4Industry</span>
+    <span class="nav-pipe">|</span>
+    <a class="nav-link" href="#topics">Topics</a>
+    <a class="nav-link" href="#organizers">Organizers</a>
+    <a class="nav-link" href="#submission">Submission</a>
+    <a class="nav-link-ext" href="https://flta-conference.org/flta-2026" target="_blank">↗ FLTA 2026</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Workshop @ FLTA 2026 · Paris, France · October 27–30</div>
+      <h1>2nd International Workshop on<br><em>Federated Learning for Industry 4.0</em></h1>
+      <p class="hero-sub">
+        Exploring cutting-edge methods, applications, and challenges for Federated Learning in industrial and manufacturing settings.
+      </p>
+
+      <div class="deadline-strip">
+        <div class="deadline-item primary">
+          <div class="deadline-label">Paper Submission</div>
+          <div class="deadline-date">August 2, 2026</div>
+        </div>
+        <div class="deadline-item">
+          <div class="deadline-label">Notification</div>
+          <div class="deadline-date">September 5, 2026</div>
+        </div>
+        <div class="deadline-item">
+          <div class="deadline-label">Camera Ready</div>
+          <div class="deadline-date">September 14, 2026</div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Paper abstract / Description -->
-  <section class="section hero is-light">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Abstract</h2>
-          <div class="content has-text-justified">
-            <p>
-              The integration of Federated Learning (FL) into manufacturing represents a transformative approach to harnessing distributed data while preserving privacy. This special session aims to explore cutting-edge methods, applications and challenges associated with the implementation of FL in industrial settings. Bringing together researchers and practitioners, the session addresses topics such as collaborative model training across multiple manufacturing units, dealing with data heterogeneity, ensuring data security, and enhancing applications such as predictive maintenance with FL. Discussions will also cover the role of FL in Industry 4.0, with an emphasis on human-centric and sustainable manufacturing processes. This session provides a platform to showcase the latest advances and share practical insights into the application of FL in manufacturing, advancing the field through shared expertise.
-            </p>
-          </div>
-        </div>
+      <div class="cta-bar">
+        <a class="btn btn-primary" href="https://conferences.sparcly.ai/author/conferences/73/entity/163/show?conference_id=73&conference_entity_id=163" target="_blank">Submit a Paper</a>
+        <a class="btn btn-ghost" href="mailto:wskl-info@mv.rptu.de?subject=[FL4I.40]%20inquiry">Contact Us</a>
       </div>
-    </div>
-  </section>
-
-  <!-- Organizers -->
-  <section class="section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3">Organizers</h2>
-      <div class="content">
-        <ul>
-          <li><a href="https://scholar.google.com/citations?hl=de&user=AERj9cgAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Martin Ruskowski</a>, German Research Center for Artificial Intelligence (DFKI), Germany</li>
-          <li>Tatjana Legler, University of Kaiserslautern-Landau (RPTU), Germany</li>
-          <li>Dr.-Ing. Vinit Hegiste, University of Kaiserslautern-Landau (RPTU), Germany</li>
-          
-          <li>Tba</li>
-          <li>Feel free to contact us, if you like to get involved in the session!</li>
-        </ul>
-      </div>
-      <h3 class="title is-4">Contact</h3>
-      <div class="content">
-      <p>Write an <a href="mailto:wskl-info@mv.rptu.de?subject=[FL4I.40]%20inquiry">E-mail</a></p>
     </div>
   </div>
-    
-  </section>
 
-  <!-- Topics of Interest -->
-  <section class="section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3">Topics of Interest</h2>
-      <div class="content">
-        <p>Topics of interest include, but are not limited to:</p>
-        <ul>
-          <li>Applications of Federated Learning in Industry 4.0 (e.g., predictive maintenance, manufacturing optimization, quality inspection)</li>
-          <li>Data privacy and security challenges</li>
-          <li>Data heterogeneity and device heterogeneity challenges in FL</li>
-          <li>Resource-efficient FL systems and infrastructure for production lines</li>
-          <li>Theoretical contributions to FL in manufacturing contexts</li>
-          <li>Explainable FL models for manufacturing processes</li>
-          <li>Federated Reinforcement Learning applications</li>
-         <li>Federated Dataset: Sharing FL dataset specific useful for Industries to progress further in application based FL</li>
-        </ul>
+  <!-- ABOUT -->
+  <div class="section-alt">
+    <div class="section">
+      <h2>About the Workshop</h2>
+      <p>
+        The integration of Federated Learning (FL) into manufacturing represents a transformative approach to harnessing distributed data while preserving privacy. This special session aims to explore cutting-edge methods, applications, and challenges associated with the implementation of FL in industrial settings.
+      </p>
+      <p>
+        Bringing together researchers and practitioners, the session addresses topics such as collaborative model training across multiple manufacturing units, dealing with data heterogeneity, ensuring data security, and enhancing applications such as predictive maintenance with FL. Discussions will also cover the role of FL in Industry 4.0, with an emphasis on human-centric and sustainable manufacturing processes.
+      </p>
+    </div>
+  </div>
+
+  <!-- TOPICS -->
+  <hr class="divider">
+  <div class="section" id="topics">
+    <h2>Topics of Interest</h2>
+    <ul class="topic-list">
+      <li>Applications of FL in Industry 4.0 (predictive maintenance, manufacturing optimization, quality inspection)</li>
+      <li>Data privacy and security challenges in FL</li>
+      <li>Data heterogeneity and device heterogeneity in FL</li>
+      <li>Resource-efficient FL systems for production lines</li>
+      <li>Theoretical contributions to FL in manufacturing</li>
+      <li>Explainable FL models for manufacturing processes</li>
+      <li>Federated Reinforcement Learning applications</li>
+      <li>Federated datasets for industry-relevant FL benchmarks</li>
+    </ul>
+  </div>
+
+  <!-- ORGANIZERS -->
+  <div class="section-alt" id="organizers">
+    <div class="section">
+      <h2>Organizers</h2>
+      <ul class="organizer-list">
+        <li>
+          <span class="org-name"><a href="https://scholar.google.com/citations?hl=de&user=AERj9cgAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Martin Ruskowski</a></span>
+          <span class="org-affil">German Research Center for Artificial Intelligence (DFKI), Germany</span>
+        </li>
+        <li>
+          <span class="org-name">Tatjana Legler</span>
+          <span class="org-affil">University of Kaiserslautern-Landau (RPTU), Germany</span>
+        </li>
+        <li>
+          <span class="org-name">Dr.-Ing. Vinit Hegiste</span>
+          <span class="org-affil">University of Kaiserslautern-Landau (RPTU), Germany</span>
+        </li>
+      </ul>
+      <div class="open-invite">
+        We welcome additional organizers and program committee members — <a href="mailto:wskl-info@mv.rptu.de?subject=[FL4I.40]%20inquiry">get in touch</a> if you'd like to get involved.
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Important Dates and Submission Guidelines -->
-  <section class="section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3">Important Dates</h2>
-      
-      <div class="table-container">
-        <table class="table is-bordered is-striped is-narrow is-fullwidth">
-          <tbody>
-            <tr>
-            <td><strong>Paper Submission:</strong></td>
-            <td>August 2, 2026</td>
-            </tr>
-            <tr>
-              <td><strong>Paper Notification:</strong></td>
-              <td>September 5, 2026</td>
-            </tr>
-            <tr>
-              <td><strong>Camera Ready Submission:</strong></td>
-              <td>September 14, 2026</td>
-            </tr>
-          </tbody>
-        </table>
+  <!-- SUBMISSION -->
+  <hr class="divider">
+  <div class="section" id="submission">
+    <h2>Submission Guidelines</h2>
+    <p>All submissions must use the A4 IEEE Manuscript Template for Conference Proceedings (.pdf format). Please include keywords with your submission.</p>
+
+    <div class="sub-grid">
+      <div class="sub-card">
+        <div class="card-label">Long Paper</div>
+        <div class="card-pages">7–8 pages</div>
+        <p>Full research contributions. Overlength papers rejected without review.</p>
       </div>
-      
-          <p>
-        <p>
-          
-        </p>
+      <div class="sub-card">
+        <div class="card-label">Short Paper / Demo</div>
+        <div class="card-pages">4–6 pages</div>
+        <p>Work-in-progress, demos, and artifact papers.</p>
+      </div>
+      <div class="sub-card">
+        <div class="card-label">Poster</div>
+        <div class="card-pages">1–2 pages</div>
+        <p>Undergraduate and early-stage research.</p>
       </div>
     </div>
-  <!-- Submission Guidelines -->
-  <section class="section"style="background-color: #f9f9f9;"">
-    <div class="container is-max-desktop">
-      <div class="content has-text-justified">
-        <h2 class="title is-3">Submission Guidelines according to FLTA2026</h2>
 
-        <div class="mb-5">
-          <h3 class="mb-3">Paper Format</h3>
-          <p class="fs-5">
-            Submitted papers (.pdf format) must use the A4 IEEE Manuscript Templates for Conference Proceedings.
-            Please remember to add Keywords to your submission.
-          </p>
-        </div>
+    <h3>Originality</h3>
+    <p>Papers must be original work not simultaneously under review elsewhere. Prior work must be cited appropriately. IEEE's <a href="https://www.ieee.org/publications/rights/plagiarism/plagiarism-faq.html" target="_blank">plagiarism policy</a> applies.</p>
 
-        <div class="mb-5">
-          <h3 class="mb-3">Length</h3>
-          <p class="fs-5">There are three categories of submission:</p>
-          <ul class="fs-5">
-            <li><strong>Long papers:</strong> 7-8 pages. Overlength papers will be rejected without review.</li>
-            <li><strong>Short papers (demo / Artifacts):</strong> 4-6 pages.</li>
-            <li><strong>Poster papers:</strong> 1-2 pages (undergraduate).</li>
-          </ul>
-        </div>
+    <h3>Author List</h3>
+    <p>The final author list must be confirmed before the submission deadline. No changes are permitted afterward.</p>
 
-        <div class="mb-5">
-          <h3 class="mb-3">Originality</h3>
-          <p class="fs-5">
-            Papers submitted to FLTA must be the original work of the authors. They may not be simultaneously under review elsewhere.
-            Publications that have been peer-reviewed and have appeared at other conferences or workshops may not be submitted to FLTA.
-            Authors should be aware that IEEE has a strict policy with regard to
-            <a href="https://www.ieee.org/publications/rights/plagiarism/plagiarism-faq.html" target="_blank">plagiarism</a>.
-            The authors’ prior work must be cited appropriately.
-          </p>
-        </div>
+    <h3>Publication</h3>
+    <p>Accepted, registered, and presented papers will be submitted to IEEE Xplore for possible publication.</p>
 
-        <div class="mb-5">
-          <h3 class="mb-3">Author List</h3>
-          <p class="fs-5">
-            Please ensure that you submit your papers with the full and final list of authors in the correct order.
-            The author list registered for each submission is not allowed to be changed in any way after the paper submission deadline.
-          </p>
-        </div>
-
-        <div class="mb-5">
-          <h3 class="mb-3">Proofreading</h3>
-          <p class="fs-5">
-            Please proofread your submission carefully. It is essential that the language used in the paper is clear and correct
-            so that it is easily understandable. (Either US English or UK English spelling conventions are acceptable.)
-          </p>
-        </div>
-
-        <div class="mb-5">
-          <h3 class="mb-3">Publication</h3>
-          <p class="fs-5">
-            All papers that are accepted, registered, and presented in FLTA will be submitted to IEEEXplore
-            for possible publication.
-          </p>
-        </div>
-
-        <div class="mb-5">
-          <h3 class="mb-3">Submission Portal</h3>
-          <p class="fs-5">
-            Access the submission portal here:
-            <a href="https://conferences.sparcly.ai/author/conferences/73/entity/163/show?conference_id=73&conference_entity_id=163" target="_blank">Submit now</a>
-          </p>
-        </div>
-      </div>
+    <div style="margin-top:1.8rem;">
+      <a class="btn btn-primary" style="background:var(--navy);" href="https://conferences.sparcly.ai/author/conferences/73/entity/163/show?conference_id=73&conference_entity_id=163" target="_blank">Submit via Portal</a>
     </div>
-  </section>
+  </div>
 
-
+  <footer>
+    FL4Industry Workshop &nbsp;·&nbsp;
+    <a href="https://flta-conference.org/flta-2026" target="_blank">FLTA 2026</a> &nbsp;·&nbsp;
+    <a href="mailto:wskl-info@mv.rptu.de?subject=[FL4I.40]%20inquiry">wskl-info@mv.rptu.de</a>
+  </footer>
 
 </body>
 </html>
